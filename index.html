@@ -17,6 +17,7 @@
     </div>
     <product :premium="premium" @add-to-cart="updateCart" @remove-to-cart="removeCart"></product>
     <product-details></product-details>
+    <product-review @review-submitted="addReview"></product-review>
 
 
 </div>

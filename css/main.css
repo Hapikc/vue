@@ -91,3 +91,20 @@ textarea {
 .Out {
     text-decoration: line-through;
 }
+
+#rec {
+    width: 10%;
+    height: 15px;
+    margin-top: 29px;
+}
+
+#not_rec{
+    width: 10%;
+    margin-top: 29px;
+    height: 15px;
+}
+
+.rec {
+    display: block;
+
+}
