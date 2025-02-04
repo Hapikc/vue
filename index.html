@@ -13,12 +13,9 @@
 <body>
 <div id="app">
     <div class="cart">
-        <p>Cart({{ cart.length }})</p>
+        <p>Корзина({{ cart.length }})</p>
     </div>
-    <product :premium="premium" @add-to-cart="updateCart" @remove-to-cart="removeCart"></product>
-    <product-details></product-details>
-    <product-review @review-submitted="addReview"></product-review>
-
+    <product :premium="premium" @add-to-cart="updateCart" @remove-from-cart="eraseCart"></product>
 
 </div>
 </body>
