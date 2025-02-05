@@ -207,13 +207,21 @@ Vue.component('product', {
         updateProduct(index) {
             this.selectedVariant = index;
         },
-
-
-
+        saveReviews() {
+            localStorage.setItem('reviews', JSON.stringify(this.reviews));
+        },
+        loadReviews() {
+            const savedReviews = localStorage.getItem('reviews');
+            if (savedReviews) {
+                this.reviews = JSON.parse(savedReviews);
+            }
+        }
     },
     mounted() {
+        this.loadReviews();
         eventBus.$on('review-submitted', productReview => {
-            this.reviews.push(productReview)
+            this.reviews.push(productReview);
+            this.saveReviews();
         })
     },
     computed: {
