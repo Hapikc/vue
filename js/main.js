@@ -1,4 +1,4 @@
-let eventBus = new Vue()
+const eventBus = new Vue()
 
 Vue.component('product-tabs', {
     props: {
@@ -36,12 +36,8 @@ Vue.component('product-tabs', {
      <div v-show="selectedTab === 'Доставка' ">
      <product-shipping></product-shipping>
 </div>
-     </div>
-     
-               
-
-   
- `,
+     </div> 
+`,
     data() {
         return {
             tabs: ['Отзывы', 'Оставить отзыв','Детали','Доставка'],
@@ -49,8 +45,6 @@ Vue.component('product-tabs', {
         }
     }
 })
-
-
 
 Vue.component('product-review', {
     template: `
@@ -90,9 +84,7 @@ Vue.component('product-review', {
          <p>
            <input type="submit"> 
          </p>
-        </form>
-        
-        
+        </form>    
  `,
     data() {
         return {
@@ -215,13 +207,14 @@ Vue.component('product', {
         updateProduct(index) {
             this.selectedVariant = index;
         },
-        mounted() {
-            eventBus.$on('review-submitted', productReview => {
-                this.reviews.push(productReview)
-            })
-        }
 
 
+
+    },
+    mounted() {
+        eventBus.$on('review-submitted', productReview => {
+            this.reviews.push(productReview)
+        })
     },
     computed: {
         title() {
@@ -239,25 +232,6 @@ Vue.component('product', {
 
     }
 })
-
-Vue.component('product-details', {
-    props: {
-        details: {
-            type: Array,
-            required: true
-        }
-    },
-    template: `
-    <ul>
-        <li v-for="detail in details" :key="detail">{{ detail }}</li>
-    </ul>
-    `,
-    data() {
-        return {
-
-        }
-    }
-});
 
 
 Vue.component('product-detail', {
